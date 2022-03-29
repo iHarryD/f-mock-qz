@@ -19,7 +19,9 @@ export default function SinglePlayerHomepage() {
     setCaughtError(null);
     setIsLoaded(false);
     try {
-      const res = await axios.get("http://localhost:3001/api/get-quizes");
+      const res = await axios.get(
+        "https://b-mock-qz.vercel.app/api/get-quizes"
+      );
       setAllQuizes(res.data.quizes);
       setIsLoaded(true);
     } catch (err) {
