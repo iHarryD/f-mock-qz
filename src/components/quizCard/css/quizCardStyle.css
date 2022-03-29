@@ -1,0 +1,57 @@
+.quiz-card {
+  position: relative;
+  min-width: var(--QUIZ-CARD-MIN-WIDTH);
+  max-width: var(--QUIZ-CARD-MAX-WIDTH);
+  background: var(--ACCENT-CLR);
+  color: var(--LIGHT-FONT-CLR);
+  height: var(--QUIZ-CARD-HEIGHT);
+}
+
+.quiz-card-text-container {
+  --HAS-GAP-VALUE: 0.5rem;
+}
+
+.quiz-card-heading {
+  font-size: 1.1em;
+  overflow-x: clip;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.quiz-card-thumbnail-container {
+  height: 40%;
+}
+
+.quiz-card-thumbnail-img {
+  display: block;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.quiz-card-description {
+  text-align: justify;
+}
+
+.quiz-card-overlay {
+  display: none;
+  position: absolute;
+  background: transparent;
+  border-radius: inherit;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity var(--TRANSITION-DURATION); /* Why does this not work? */
+}
+
+.quiz-card:hover > .quiz-card-overlay {
+  background: var(--QUIZ-CARD-OVERLAY-CLR);
+  display: flex;
+}
+
+.quiz-card-overlay:hover {
+  opacity: 1;
+}

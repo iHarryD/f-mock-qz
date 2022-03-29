@@ -1,0 +1,19 @@
+.quiz-selection-section {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--QUIZ-CARD-MIN-WIDTH), var(--QUIZ-CARD-MAX-WIDTH))
+  );
+}
+
+.single-player-homepage .sub-heading {
+  border-bottom: 2px solid;
+  margin: 0 1rem;
+  padding: 1rem 0;
+}
+
+.text-at-bottom {
+  margin: 1rem;
+  text-align: center;
+}
