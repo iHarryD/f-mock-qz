@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap");
+
+body {
+  color: var(--PRIMARY-FONT-CLR);
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+}
+
+.heading {
+  font-size: clamp(2.5rem, 2rem + 2vw, 4rem);
+}
+
+.sub-heading.--h2 {
+  font-size: clamp(1.7rem, 1rem + 2vw, 2.5rem);
+}
+
+.sub-heading.--h3 {
+  font-size: clamp(1.3rem, 0.5rem + 1vw, 1.5rem);
+}
+
+.--small-text {
+  font-size: 0.8rem;
+}
+
+.--light-300 {
+  font-weight: 300;
+}
+
+.--bold-600 {
+  font-weight: 600;
+}
+
+.--bold-700 {
+  font-weight: 700;
+}

@@ -1,0 +1,101 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--PRIMARY-BACKGROUND-CLR);
+  /* background: url("../Assets/Group\ 144.png"); */
+  background-position: center;
+  background-size: contain;
+}
+
+button,
+input,
+a,
+ul {
+  background: inherit;
+  border: none;
+  color: inherit;
+  font-size: inherit;
+  list-style: none;
+  outline: none;
+  text-decoration: none;
+}
+
+main {
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(129, 129, 129, 0.39);
+  border-radius: 15px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #616161bb;
+}
+
+.btn {
+  cursor: pointer;
+  font-weight: 600;
+  padding: var(--BTN-PADDING-Y) var(--BTN-PADDING-X);
+}
+
+.btn.--primary-btn {
+  background: var(--ACCENT-CLR);
+  color: var(--LIGHT-FONT-CLR);
+  border-radius: var(--BORDER-RADIUS);
+}
+
+.btn.--secondary-btn {
+  padding: calc(var(--BTN-PADDING-Y) - var(--BTN-INPUT-BORDER-WIDTH))
+    calc(var(--BTN-PADDING-X) - var(--BTN-INPUT-BORDER-WIDTH));
+  background: #0000;
+  border: var(--BTN-INPUT-BORDER-WIDTH) solid var(--ACCENT-CLR);
+  border-radius: var(--BORDER-RADIUS);
+  position: relative;
+  z-index: 1;
+}
+
+.btn.--secondary-btn::after {
+  content: "";
+  background: var(--SECONDARY-BTN-HOVER-BACKGROUND-CLR);
+  border-radius: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: scaleY(0);
+  transition: transform var(--TRANSITION-DURATION);
+  transform-origin: top;
+  z-index: -1;
+}
+
+.btn.btn.--secondary-btn:hover::after {
+  transform: scaleY(1);
+}
+
+.--icon-only-btn {
+  padding: 0;
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}

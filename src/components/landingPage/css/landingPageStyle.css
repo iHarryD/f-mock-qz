@@ -1,0 +1,40 @@
+.main.--landing-page {
+  gap: 3em;
+}
+
+/* MAIN_SECTION */
+
+.section-heading {
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+/* MAIN_DEALS-OF-THE-DAY */
+
+.deals-of-the-day-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* MAIN_SUGGESTIONS-FOR-YOU */
+
+.suggestions-container {
+  flex-wrap: wrap;
+}
+
+/* MAIN_COFFEE-CLUB */
+
+.loyalty-card-container {
+  box-shadow: 0px 3px 5px #00000091;
+  border-radius: var(--LOYALTY-CARD-BORDER-RADIUS);
+  max-width: var(--LOYALTY-CARD-MAX-WIDTH);
+  overflow: hidden;
+  flex-basis: 100%;
+}
+
+.loyalty-card-container > img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}

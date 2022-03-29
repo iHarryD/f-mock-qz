@@ -1,0 +1,9 @@
+.navbar {
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+}
+
+.navlinks-container {
+  --HAS-GAP-VALUE: 2em;
+}

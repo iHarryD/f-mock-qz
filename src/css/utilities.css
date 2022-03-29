@@ -1,0 +1,42 @@
+.--verticle-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.--horizontal-flex {
+  display: flex;
+}
+
+.--centered-flex {
+  align-items: center;
+  justify-content: center;
+}
+
+.--has-gap {
+  gap: var(--HAS-GAP-VALUE, 1rem);
+}
+
+.--has-padding {
+  padding: var(--HAS-PADDING-VALUE, 1rem);
+}
+
+.--has-hover-overlay {
+  position: relative;
+}
+
+.--has-hover-overlay::after {
+  background: var(--HOVER-OVERLAY-CLR);
+  border-radius: inherit;
+  content: "";
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity var(--TRANSITION-DURATION);
+}
+
+.--has-hover-overlay:hover::after {
+  opacity: 1;
+}
