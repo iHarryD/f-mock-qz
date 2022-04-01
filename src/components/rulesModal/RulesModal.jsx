@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 import "./css/rulesModalStyle.css";
 import BodyBackdrop from "../bodyBackdrop/BodyBackdrop";
@@ -11,7 +12,18 @@ export default function RulesModal(props) {
   const navigate = useNavigate();
   const usernameInputRef = useRef();
   const { user, setUser } = useUser();
-  const { quiz } = useQuiz();
+  const { quiz, setQuiz } = useQuiz();
+
+  async function getQuestions() {
+    try {
+      const res = await axios.get(
+        `http://127.0.01:3001/api/get-questions?quizCode=${quiz.code}`
+      );
+      setQuiz((prev) => ({ ...prev, questions: res.data.questions }));
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const modalVariant = {
     hidden: {
@@ -27,6 +39,18 @@ export default function RulesModal(props) {
       //   },
     },
   };
+
+  async function startQuiz() {
+    setUser((prev) => ({
+      ...prev,
+      name: usernameInputRef.current.value.replace(/\s/g, "")
+        ? usernameInputRef.current.value
+        : prev.name,
+    }));
+    await getQuestions();
+    props.modalState(false);
+    navigate(`in-quiz/${quiz.code}`);
+  }
 
   return (
     <BodyBackdrop>
@@ -81,22 +105,13 @@ export default function RulesModal(props) {
                 className="username-input"
                 type="text"
                 name="name"
-                placeholder={"Guest"}
+                placeholder={user.name}
               />
             </div>
             <div className="--horizontal-flex --centered-flex --has-gap">
               <button
                 className="btn --primary-btn --has-hover-overlay"
-                onClick={() => {
-                  setUser((prev) => ({
-                    ...prev,
-                    name: usernameInputRef.current.value.replace(/\s/g, "")
-                      ? usernameInputRef.current.value
-                      : prev.name,
-                  }));
-                  props.modalState(false);
-                  navigate(`in-quiz/${quiz.code}`);
-                }}
+                onClick={() => startQuiz()}
               >
                 Start Quiz
               </button>

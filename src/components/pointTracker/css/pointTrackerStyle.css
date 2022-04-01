@@ -1,0 +1,6 @@
+.points-tracker {
+  background: var(--POINT-TRACKER-BACKGROUND-CLR);
+  border-radius: var(--BORDER-RADIUS);
+  height: 2rem;
+  width: 100%;
+}
