@@ -1,0 +1,19 @@
+.loader {
+  animation: loader-spins 1.5s infinite;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: var(--LOADER-BORDER-WIDTH) solid var(--ACCENT-CLR);
+  border-top: var(--LOADER-BORDER-WIDTH) solid var(--BODY-BACKDROP-CLR);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--LOADER-WIDTH);
+  z-index: 1;
+}
+
+@keyframes loader-spins {
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

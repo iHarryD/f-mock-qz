@@ -1,40 +1,60 @@
-.main.--landing-page {
-  gap: 3em;
+.landing-page-heading,
+.landing-page-text {
+  text-transform: uppercase;
 }
 
-/* MAIN_SECTION */
-
-.section-heading {
-  margin-bottom: 0.5em;
+.landing-page-sub-heading {
+  margin: 0.5em 1em 2em;
   text-align: center;
 }
 
-/* MAIN_DEALS-OF-THE-DAY */
-
-.deals-of-the-day-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+.landing-page-btn-container {
+  margin: 1rem 0;
 }
 
-/* MAIN_SUGGESTIONS-FOR-YOU */
+/*
+.landing-page-logo {
+  background: linear-gradient(45deg, var(--ACCENT-CLR), #009688);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+*/
 
-.suggestions-container {
-  flex-wrap: wrap;
+.landing-page-animated-letters {
+  color: var(--ACCENT-CLR);
+  cursor: default;
+  display: inline-block;
+  font-size: 1.1em;
+  margin-right: -0.1em;
+  text-shadow: -5px 4px 5px var(--SHADOW-CLR);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* MAIN_COFFEE-CLUB */
-
-.loyalty-card-container {
-  box-shadow: 0px 3px 5px #00000091;
-  border-radius: var(--LOYALTY-CARD-BORDER-RADIUS);
-  max-width: var(--LOYALTY-CARD-MAX-WIDTH);
-  overflow: hidden;
-  flex-basis: 100%;
+.landing-page-animated-letters:nth-child(1) {
+  transform: rotate(5deg);
 }
 
-.loyalty-card-container > img {
-  display: block;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
+.landing-page-animated-letters:nth-child(2) {
+  transform: rotate(-10deg);
+}
+
+.landing-page-animated-letters:nth-child(3) {
+  transform: rotate(10deg);
+}
+
+.landing-page-animated-letters:nth-child(4) {
+  transform: rotate(8deg);
+}
+
+.landing-page-animated-letters:nth-child(5) {
+  transform: rotate(-5deg);
+}
+
+.landing-page-animated-letters:nth-child(6) {
+  transform: rotate(-17deg);
+}
+
+.landing-page-animated-letters:hover {
+  margin-top: -20px;
+  transform: scale(1.2);
 }
