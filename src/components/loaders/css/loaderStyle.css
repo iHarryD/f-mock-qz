@@ -1,4 +1,4 @@
-.loader {
+.full-page-loader {
   animation: loader-spins 1.5s infinite;
   aspect-ratio: 1;
   border-radius: 50%;
@@ -16,4 +16,9 @@
   100% {
     transform: translate(-50%, -50%) rotate(360deg);
   }
+}
+
+.btn-loader {
+  max-width: 4rem;
+  max-height: 2rem;
 }

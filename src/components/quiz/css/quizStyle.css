@@ -1,0 +1,30 @@
+.quiz-heading {
+  padding-bottom: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.question-and-footer-container {
+  flex-grow: 1;
+}
+
+.quiz-aside {
+  width: max(
+    var(--QUIZ-ASIDE-RELATIVE-WIDTH),
+    var(--QUIZ-ASIDE-ABSOLUTE-WIDTH)
+  );
+}
+
+.current-score-container {
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.current-score {
+  font-size: 1.4rem;
+}
+
+.trackers-container {
+  flex-direction: column-reverse;
+}

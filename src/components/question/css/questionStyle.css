@@ -1,0 +1,33 @@
+.question {
+  font-size: 1.5em;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.option {
+  border: 2px solid var(--ACCENT-CLR);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em;
+  margin-bottom: 0.7rem;
+  padding: 0.8rem;
+  transition: all var(--TRANSITION-DURATION);
+  width: 100%;
+}
+
+.option:hover {
+  background: var(--ACCENT-CLR);
+  color: #fff;
+}
+
+.option.correct {
+  background: var(--GREEN-CLR);
+  border-color: var(--GREEN-CLR);
+  color: #fff;
+}
+
+.option.wrong {
+  background: var(--RED-CLR);
+  border-color: var(--RED-CLR);
+  color: #fff;
+}
