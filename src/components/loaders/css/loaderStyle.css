@@ -3,7 +3,7 @@
   aspect-ratio: 1;
   border-radius: 50%;
   border: var(--LOADER-BORDER-WIDTH) solid var(--ACCENT-CLR);
-  border-top: var(--LOADER-BORDER-WIDTH) solid var(--BODY-BACKDROP-CLR);
+  border-top: var(--LOADER-BORDER-WIDTH) solid #00000033;
   position: fixed;
   top: 50%;
   left: 50%;

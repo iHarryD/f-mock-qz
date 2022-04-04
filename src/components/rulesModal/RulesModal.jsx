@@ -23,7 +23,7 @@ export default function RulesModal(props) {
     setCaughtError(null);
     try {
       const res = await axios.get(
-        `https://b-mock-qz.vercel.app/api/get-questionsh?quizCode=${quiz.code}`
+        `https://b-mock-qz.vercel.app/api/get-questions?quizCode=${quiz.code}`
       );
       setQuiz((prev) => ({ ...prev, questions: res.data.questions }));
       navigate(`in-quiz/${quiz.code}`);
