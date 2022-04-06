@@ -42,7 +42,6 @@ export default function useQuizLogic() {
   useEffect(() => {
     if (!isQuizOver) return;
     clearInterval(currentIntervalID);
-    console.log(totalScore);
     navigate("../single-player/result", {
       state: {
         finalScore: totalScore,
@@ -86,5 +85,6 @@ export default function useQuizLogic() {
     hasUserSelected,
     optionClickHandler,
     currentQuestion,
+    quizEnds,
   };
 }

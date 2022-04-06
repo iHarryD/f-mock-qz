@@ -9,14 +9,9 @@ import { useTheme } from "../../contexts/themeContext";
 export default function Header() {
   const { themePreference, setThemePreference } = useTheme();
 
-  function setDarkTheme() {
-    setThemePreference("dark");
-    localStorage.setItem("themePreference", "dark");
-  }
-
-  function setLightTheme() {
-    setThemePreference("light");
-    localStorage.setItem("themePreference", "light");
+  function setTheme(theme) {
+    setThemePreference(theme);
+    localStorage.setItem("themePreference", theme);
   }
 
   return (
@@ -45,9 +40,8 @@ export default function Header() {
           <li>
             <button
               className="btn --icon-only-btn"
-              onClick={() =>
-                themePreference === "light" ? setDarkTheme() : setLightTheme()
-              }
+              value={themePreference === "dark" ? "light" : "dark"}
+              onClick={(e) => setTheme(e.target.value)}
             >
               <FontAwesomeIcon
                 icon={themePreference === "light" ? faMoon : faSun}

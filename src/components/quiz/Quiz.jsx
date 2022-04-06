@@ -13,6 +13,7 @@ export default function Quiz() {
     hasUserSelected,
     optionClickHandler,
     currentQuestion,
+    quizEnds,
   } = useQuizLogic();
 
   return (
@@ -34,12 +35,19 @@ export default function Quiz() {
             <div className="helper-container"></div>
           </div>
         </div>
-
         <aside className="quiz-aside --has-padding">
-          <p className="current-score-container">
-            Current score:{" "}
-            <span className="current-score --bold-700">{totalScore}</span>
-          </p>
+          <div className="score-quit-btn-container --verticle-flex --has-gap">
+            <button
+              className="btn quit-quiz-btn --primary-btn --small-text"
+              onClick={() => quizEnds()}
+            >
+              Quit Quiz
+            </button>
+            <p className="current-score-container">
+              Current score:{" "}
+              <span className="current-score --bold-700">{totalScore}</span>
+            </p>
+          </div>
           <ul className="trackers-container --verticle-flex --has-gap">
             {allPointerTrackers.map((tracker, index) => (
               <PointTracker point={tracker} key={index} />
