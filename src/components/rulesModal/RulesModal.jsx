@@ -1,17 +1,39 @@
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 import "./css/rulesModalStyle.css";
 import BodyBackdrop from "../bodyBackdrop/BodyBackdrop";
 import { useUser } from "../../contexts/userContext";
 import { useQuiz } from "../../contexts/quizContext";
+import { ButtonWithLoader } from "../buttons/Buttons";
+import { ErrorToast } from "../toasts/Toasts";
 
 export default function RulesModal(props) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [caughtError, setCaughtError] = useState(null);
   const navigate = useNavigate();
   const usernameInputRef = useRef();
   const { user, setUser } = useUser();
-  const { quiz } = useQuiz();
+  const { quiz, setQuiz } = useQuiz();
+
+  async function getQuestions() {
+    setIsLoading(true);
+    setCaughtError(null);
+    try {
+      const res = await axios.get(
+        `https://b-mock-qz.vercel.app/api/get-questions?quizCode=${quiz.code}`
+      );
+      setQuiz((prev) => ({ ...prev, questions: res.data.questions }));
+      navigate(`in-quiz/${quiz.code}`);
+    } catch (err) {
+      console.log(err);
+      setCaughtError(err);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   const modalVariant = {
     hidden: {
@@ -21,12 +43,18 @@ export default function RulesModal(props) {
     visible: {
       y: 0,
       opacity: 1,
-      //   transition: {
-      //     type: "spring",
-      //     stiffness: 100,
-      //   },
     },
   };
+
+  function startQuiz() {
+    setUser((prev) => ({
+      ...prev,
+      name: usernameInputRef.current.value.replace(/\s/g, "")
+        ? usernameInputRef.current.value
+        : prev.name,
+    }));
+    getQuestions();
+  }
 
   return (
     <BodyBackdrop>
@@ -81,26 +109,15 @@ export default function RulesModal(props) {
                 className="username-input"
                 type="text"
                 name="name"
-                placeholder={"Guest"}
+                placeholder={user.name}
               />
             </div>
             <div className="--horizontal-flex --centered-flex --has-gap">
-              <button
-                className="btn --primary-btn --has-hover-overlay"
-                onClick={() => {
-                  setUser((prev) => ({
-                    ...prev,
-                    name: usernameInputRef.current.value.replace(/\s/g, "")
-                      ? usernameInputRef.current.value
-                      : prev.name,
-                  }));
-                  props.modalState(false);
-                  navigate(`in-quiz/${quiz.code}`);
-                }}
-              >
-                Start Quiz
-              </button>
-
+              <ButtonWithLoader
+                text="Start"
+                loading={isLoading}
+                clickHandler={startQuiz}
+              />
               <button
                 className="btn modal-close-btn --secondary-btn"
                 onClick={() => {
@@ -113,6 +130,11 @@ export default function RulesModal(props) {
           </div>
         </div>
       </motion.div>
+      {caughtError && (
+        <ErrorToast>
+          <span>Error</span>
+        </ErrorToast>
+      )}
     </BodyBackdrop>
   );
 }

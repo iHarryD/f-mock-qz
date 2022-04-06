@@ -12,14 +12,6 @@
   margin: 1rem 0;
 }
 
-/*
-.landing-page-logo {
-  background: linear-gradient(45deg, var(--ACCENT-CLR), #009688);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-*/
-
 .landing-page-animated-letters {
   color: var(--ACCENT-CLR);
   cursor: default;

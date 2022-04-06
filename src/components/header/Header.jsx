@@ -1,11 +1,24 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun } from "@fortawesome/free-solid-svg-icons";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 import "./css/headerStyle.css";
+import { useTheme } from "../../contexts/themeContext";
 
 export default function Header() {
+  const { themePreference, setThemePreference } = useTheme();
+
+  function setDarkTheme() {
+    setThemePreference("dark");
+    localStorage.setItem("themePreference", "dark");
+  }
+
+  function setLightTheme() {
+    setThemePreference("light");
+    localStorage.setItem("themePreference", "light");
+  }
+
   return (
     <header>
       <nav className="navbar --horizontal-flex">
@@ -30,8 +43,15 @@ export default function Header() {
             </button>
           </li>
           <li>
-            <button className="btn --icon-only-btn">
-              <FontAwesomeIcon icon={faSun} />
+            <button
+              className="btn --icon-only-btn"
+              onClick={() =>
+                themePreference === "light" ? setDarkTheme() : setLightTheme()
+              }
+            >
+              <FontAwesomeIcon
+                icon={themePreference === "light" ? faMoon : faSun}
+              />
             </button>
           </li>
         </ul>

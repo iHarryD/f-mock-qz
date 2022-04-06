@@ -1,0 +1,8 @@
+.timer-container {
+  background: var(--ACCENT-CLR);
+  border-radius: var(--BORDER-RADIUS);
+  color: #fff;
+  font-size: 3rem;
+  text-align: center;
+  flex-grow: 1;
+}

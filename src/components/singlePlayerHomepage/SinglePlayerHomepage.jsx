@@ -5,7 +5,7 @@ import "./css/singlePlayerHomepageStyle.css";
 import QuizCard from "../quizCard/QuizCard";
 import RulesModal from "../rulesModal/RulesModal";
 import { ErrorToast } from "../toasts/Toasts";
-import Loader from "../loader/Loader";
+import { FullPageLoader } from "../loaders/Loaders";
 import { useQuiz } from "../../contexts/quizContext";
 
 export default function SinglePlayerHomepage() {
@@ -13,7 +13,7 @@ export default function SinglePlayerHomepage() {
   const [isLoaded, setIsLoaded] = useState(true);
   const [caughtError, setCaughtError] = useState(null);
   const [allQuizes, setAllQuizes] = useState([]);
-  const { quiz, setQuiz } = useQuiz();
+  const { setQuiz } = useQuiz();
 
   async function getAllQuizes() {
     setCaughtError(null);
@@ -41,7 +41,7 @@ export default function SinglePlayerHomepage() {
   return (
     <>
       {hasUserSelected && <RulesModal modalState={setHasUserSelected} />}
-      {!isLoaded && <Loader />}
+      {!isLoaded && <FullPageLoader />}
       <main className="single-player-homepage">
         <h3 className="sub-heading --h2">Select the quiz</h3>
         <section className="section quiz-selection-section --has-gap --has-padding">

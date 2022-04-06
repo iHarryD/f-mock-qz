@@ -8,9 +8,10 @@
 
 body {
   background: var(--PRIMARY-BACKGROUND-CLR);
-  /* background: url("../Assets/Group\ 144.png"); */
   background-position: center;
   background-size: contain;
+  transition: background-color var(--TRANSITION-DURATION),
+    color var(--TRANSITION-DURATION);
 }
 
 button,
