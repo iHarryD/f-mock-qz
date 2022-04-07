@@ -7,8 +7,10 @@
   );
 }
 
-.single-player-homepage .sub-heading {
+.single-player-homepage__header {
+  align-items: center;
   border-bottom: 2px solid;
+  justify-content: space-between;
   margin: 0 1rem;
   padding: 1rem 0;
 }
@@ -16,4 +18,13 @@
 .text-at-bottom {
   margin: 1rem;
   text-align: center;
+}
+
+.search-container {
+  border: var(--BTN-INPUT-BORDER-WIDTH) solid;
+  border-radius: var(--BORDER-RADIUS);
+}
+
+.search-container input {
+  padding: 0 1em;
 }

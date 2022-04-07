@@ -14,7 +14,7 @@ export default function Question({
           value={currentQuestion.options[option]}
           key={`${currentQuestion.questionCode}-${index}`}
           onClick={(e) => optionClickHandler(e)}
-          disabled={hasUserSelected ? true : false}
+          disabled={hasUserSelected}
         >
           {option}
         </button>
