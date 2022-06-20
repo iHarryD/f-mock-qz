@@ -1,10 +1,10 @@
 import "./css/quizStyle.css";
 import useQuizLogic from "../../hooks/useQuizLogic";
-import Question from "../question/Question";
-import Timer from "../timer/Timer";
-import PointTracker from "../pointTracker/PointTracker";
+import Question from "../../components/question/Question";
+import Timer from "../../components/timer/Timer";
+import PointTracker from "../../components/pointTracker/PointTracker";
 
-export default function Quiz() {
+export default function QuizPage() {
   const {
     allPointerTrackers,
     totalScore,

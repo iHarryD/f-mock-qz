@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import "./css/singlePlayerHomepageStyle.css";
-import QuizCard from "../quizCard/QuizCard";
-import RulesModal from "../rulesModal/RulesModal";
-import { ErrorToast } from "../toasts/Toasts";
-import { FullPageLoader } from "../loaders/Loaders";
+import QuizCard from "../../components/quizCard/QuizCard";
+import RulesModal from "../../components/rulesModal/RulesModal";
+import { ErrorToast } from "../../components/toasts/Toasts";
+import { FullPageLoader } from "../../components/loaders/Loaders";
 import { useQuiz } from "../../contexts/quizContext";
 
 export default function SinglePlayerHomepage() {
