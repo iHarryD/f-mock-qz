@@ -7,7 +7,7 @@ export default function MultiplayerHomeScreen() {
         <section className={multiplayerScreenStyles["section"]}>
           <div className={multiplayerScreenStyles["user-info"]}>
             <p>Logged in as</p>
-            <p className="--bold-600">anuraagvr555@gmail.com</p>
+            <p className="--bold-600">anuraagve&hyma.com</p>
           </div>
           <div className={multiplayerScreenStyles["button-container"]}>
             <button className="btn --primary-btn --has-hover-overlay">
