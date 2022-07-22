@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import axios from "axios";
 
 import "./css/rulesModalStyle.css";
 import BodyBackdrop from "../bodyBackdrop/BodyBackdrop";
@@ -9,6 +8,9 @@ import { useUser } from "../../contexts/userContext";
 import { useQuiz } from "../../contexts/quizContext";
 import { ButtonWithLoader } from "../buttons/Buttons";
 import { ErrorToast } from "../toasts/Toasts";
+import { getQuestionsOfQuiz } from "../../services/quizServices";
+import SinglePlayerRules from "../singlePlayerRules/SinglePlayerRulesSection";
+import MultiplayerRules from "../multiplayerRules/MultiplayerRules";
 
 export default function RulesModal(props) {
   const [isLoading, setIsLoading] = useState(false);
@@ -19,20 +21,19 @@ export default function RulesModal(props) {
   const { quiz, setQuiz } = useQuiz();
 
   async function getQuestions() {
-    setIsLoading(true);
     setCaughtError(null);
-    try {
-      const res = await axios.get(
-        `https://b-mock-qz.vercel.app/api/get-questions?quizCode=${quiz.code}`
-      );
-      setQuiz((prev) => ({ ...prev, questions: res.data.questions }));
-      navigate(`in-quiz/${quiz.code}`);
-    } catch (err) {
-      console.log(err);
-      setCaughtError(err);
-    } finally {
-      setIsLoading(false);
-    }
+    getQuestionsOfQuiz(
+      quiz.code,
+      setIsLoading,
+      (result) => {
+        setQuiz((prev) => ({ ...prev, questions: result.data.questions }));
+        navigate(`in-quiz/${quiz.code}`);
+      },
+      (err) => {
+        console.log(err);
+        setCaughtError(err);
+      }
+    );
   }
 
   const modalVariant = {
@@ -75,18 +76,11 @@ export default function RulesModal(props) {
         <div className="modal-main --verticle-flex --has-gap --has-padding">
           <div className="modal__container">
             <p className="modal__container-heading">Rules</p>
-            <ul>
-              <li>There will be 10 questions in total.</li>
-              <li>
-                Four options will be given for each question, among which only
-                one would be correct.
-              </li>
-              <li>
-                You will be given 15 seconds for each question. In case you do
-                not choose an option before the time runs out, you will be moved
-                to the next question.
-              </li>
-            </ul>
+            {props.multiplayerMode ? (
+              <MultiplayerRules />
+            ) : (
+              <SinglePlayerRules />
+            )}
           </div>
           <div className="modal__container">
             <p className="modal__container-heading">Marking System</p>

@@ -2,5 +2,28 @@
   background: var(--POINT-TRACKER-BACKGROUND-CLR);
   border-radius: var(--BORDER-RADIUS);
   height: 2em;
+  overflow: hidden;
+  position: relative;
   width: 100%;
+}
+
+.player-position-marker {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #0005;
+  position: absolute;
+  top: 50%;
+  width: 10px;
+}
+
+.player-position-marker.--self {
+  background: var(--GREEN-CLR);
+  left: 1rem;
+  transform: translate(-50%, -50%);
+}
+
+.player-position-marker.--opponent {
+  background: var(--RED-CLR);
+  right: 1rem;
+  transform: translate(-50%, -50%);
 }

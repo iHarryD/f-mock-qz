@@ -22,7 +22,12 @@ export default function QuizCard(props) {
         <button
           className="btn --secondary-btn"
           value={props.quizDetails.quizCode}
-          onClick={(e) => props.clickHandler(e)}
+          onClick={() =>
+            props.clickHandler(
+              props.quizDetails.quizName,
+              props.quizDetails.quizCode
+            )
+          }
           data-quizname={props.quizDetails.quizName}
         >
           Take Quiz

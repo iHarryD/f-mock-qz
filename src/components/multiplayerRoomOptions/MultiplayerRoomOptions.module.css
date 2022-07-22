@@ -1,18 +1,15 @@
 .section-container {
   border: 2px solid #fff;
   border-radius: var(--BORDER-RADIUS);
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
-  grid-template-columns: 1fr 1fr;
   padding: 1rem;
   width: min(100%, 30rem);
 }
 
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin: auto;
+.room-name-input {
+  text-align: center;
   width: 100%;
 }
 

@@ -2,7 +2,14 @@ import "./css/quizStyle.css";
 import useQuizLogic from "../../hooks/useQuizLogic";
 import Question from "../../components/question/Question";
 import Timer from "../../components/timer/Timer";
-import PointTracker from "../../components/pointTracker/PointTracker";
+import PointTracker, {
+  MultiplayerPointTracker,
+  SinglePlayerPointTracker,
+} from "../../components/pointTracker/PointTracker";
+import {
+  MultiplayerScoreBoard,
+  SinglePlayerScoreBoard,
+} from "../../components/scoreBoards/ScoreBoards";
 
 export default function QuizPage() {
   const {
@@ -14,6 +21,7 @@ export default function QuizPage() {
     optionClickHandler,
     currentQuestion,
     quizEnds,
+    opponentPointTrackers,
   } = useQuizLogic();
 
   return (
@@ -43,15 +51,34 @@ export default function QuizPage() {
             >
               Quit Quiz
             </button>
-            <p className="current-score-container">
-              Current score:{" "}
-              <span className="current-score --bold-700">{totalScore}</span>
-            </p>
+            {quiz.mode === "multiplayer" ? (
+              <MultiplayerScoreBoard
+                selfScore={allPointerTrackers.reduce(
+                  (acc, currentScore) => acc + currentScore,
+                  0
+                )}
+                opponentScore={opponentPointTrackers.reduce(
+                  (acc, currentScore) => acc + currentScore,
+                  0
+                )}
+              />
+            ) : (
+              <SinglePlayerScoreBoard score={totalScore} />
+            )}
           </div>
           <ul className="trackers-container --verticle-flex --has-gap">
-            {allPointerTrackers.map((tracker, index) => (
-              <PointTracker point={tracker} key={index} />
-            ))}
+            {quiz.mode === "multiplayer"
+              ? quiz.questions.map((question, index) => (
+                  <MultiplayerPointTracker
+                    key={index * 2}
+                    questionNumber={index + 1}
+                    selfPosition={allPointerTrackers.length + 1}
+                    opponentPosition={opponentPointTrackers.length + 1}
+                  />
+                ))
+              : allPointerTrackers.map((tracker, index) => (
+                  <SinglePlayerPointTracker point={tracker} key={index} />
+                ))}
           </ul>
         </aside>
       </section>

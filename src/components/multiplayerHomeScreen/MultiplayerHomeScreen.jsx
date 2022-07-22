@@ -1,37 +1,20 @@
-import multiplayerScreenStyles from "./MultiplayerHomeScreen.module.css";
+import { useState } from "react";
+import { useQuiz } from "../../contexts/quizContext";
+import MultiplayerRoomOptions from "../multiplayerRoomOptions/MultiplayerRoomOptions";
+import Quizes from "../quizes/Quizes";
 
 export default function MultiplayerHomeScreen() {
-  return (
-    <main className="--verticle-flex --centered-flex">
-      <div className={multiplayerScreenStyles["section-container"]}>
-        <section className={multiplayerScreenStyles["section"]}>
-          <div className={multiplayerScreenStyles["user-info"]}>
-            <p>Logged in as</p>
-            <p className="--bold-600">anuraagve&hyma.com</p>
-          </div>
-          <div className={multiplayerScreenStyles["button-container"]}>
-            <button className="btn --primary-btn --has-hover-overlay">
-              Dashboard
-            </button>
-            <button className="btn --primary-btn --has-hover-overlay">
-              Logout
-            </button>
-          </div>
-        </section>
-        <section className={multiplayerScreenStyles["section"]}>
-          <div>
-            <input placeholder="Guest" className="input" />
-          </div>
-          <div className={multiplayerScreenStyles["button-container"]}>
-            <button className="btn --primary-btn --has-hover-overlay">
-              Join a room
-            </button>
-            <button className="btn --primary-btn --has-hover-overlay">
-              Create a room
-            </button>
-          </div>
-        </section>
-      </div>
-    </main>
+  const { setQuiz } = useQuiz();
+  const [hasUserSelected, setHasUserSelected] = useState(false);
+
+  function quizCardClickHandler(name, code) {
+    setQuiz((prev) => ({ ...prev, name, code }));
+    setHasUserSelected(true);
+  }
+
+  return hasUserSelected ? (
+    <MultiplayerRoomOptions />
+  ) : (
+    <Quizes quizCardClickHandler={quizCardClickHandler} />
   );
 }

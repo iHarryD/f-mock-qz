@@ -12,6 +12,7 @@ export default function AllRoutes() {
       <Route path="/" element={<LandingPage />} />
       <Route path="single-player" element={<SinglePlayerHomepage />} />
       <Route path="/multiplayer" element={<MultiplayerHomepage />} />
+      <Route path="multiplayer/in-quiz/:quizCode" element={<QuizPage />} />
       <Route path="single-player/in-quiz/:quizCode" element={<QuizPage />} />
       <Route path="/single-player/result" element={<ResultPage />} />
     </Routes>
