@@ -1,0 +1,19 @@
+.current-score-container {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.current-score {
+  font-size: 1.4rem;
+}
+
+.multiplayer-scoreboard-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+}
+
+.player-notation {
+  font-weight: 600;
+  text-decoration: underline;
+}

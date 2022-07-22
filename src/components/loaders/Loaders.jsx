@@ -3,13 +3,17 @@ import ReactDOM from "react-dom";
 import "./css/loaderStyle.css";
 import BodyBackdrop from "../bodyBackdrop/BodyBackdrop";
 
-export function FullPageLoader() {
+export function FullPageLoaderWithBackdrop() {
   return ReactDOM.createPortal(
     <BodyBackdrop>
       <div className="full-page-loader"></div>
     </BodyBackdrop>,
     document.getElementById("portal")
   );
+}
+
+export function InFullPageLoader() {
+  return <div className="full-page-loader in-full-page-loader"></div>;
 }
 
 export function ButtonLoader() {

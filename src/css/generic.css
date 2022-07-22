@@ -27,8 +27,14 @@ ul {
   text-decoration: none;
 }
 
-main {
+.App {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
 }
 
 img {
@@ -109,4 +115,15 @@ img {
 
 .btn > svg {
   pointer-events: none;
+}
+
+.input {
+  border: 2px solid var(--ACCENT-CLR);
+  border-radius: var(--BORDER-RADIUS);
+  padding: 0.5rem 1rem;
+  transition: box-shadow var(--TRANSITION-DURATION);
+}
+
+.input:focus {
+  box-shadow: 0 0 5px var(--ACCENT-CLR);
 }

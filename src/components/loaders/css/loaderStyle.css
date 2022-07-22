@@ -12,6 +12,10 @@
   z-index: 1;
 }
 
+.in-full-page-loader {
+  position: absolute;
+}
+
 @keyframes loader-spins {
   100% {
     transform: translate(-50%, -50%) rotate(360deg);

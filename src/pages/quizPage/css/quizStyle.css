@@ -15,17 +15,8 @@
   );
 }
 
-.current-score-container {
-  text-transform: uppercase;
-  text-align: center;
-}
-
 .score-quit-btn-container {
   margin-bottom: 1.5rem;
-}
-
-.current-score {
-  font-size: 1.4rem;
 }
 
 .btn.quit-quiz-btn {
