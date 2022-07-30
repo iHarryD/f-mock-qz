@@ -13,7 +13,7 @@ export function MultiplayerScoreBoard({ selfScore, opponentScore }) {
     <div className="multiplayer-scoreboard-container">
       <div>
         <p className="current-score --bold-700">{selfScore}</p>
-        <p className="player-notation">Your</p>
+        <p className="player-notation">You</p>
       </div>
       <div>
         <p className="current-score --bold-700">{opponentScore}</p>

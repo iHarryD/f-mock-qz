@@ -2,7 +2,7 @@ import "./css/quizStyle.css";
 import useQuizLogic from "../../hooks/useQuizLogic";
 import Question from "../../components/question/Question";
 import Timer from "../../components/timer/Timer";
-import PointTracker, {
+import {
   MultiplayerPointTracker,
   SinglePlayerPointTracker,
 } from "../../components/pointTracker/PointTracker";
@@ -10,6 +10,7 @@ import {
   MultiplayerScoreBoard,
   SinglePlayerScoreBoard,
 } from "../../components/scoreBoards/ScoreBoards";
+import useInMobileView from "../../hooks/useInMobileView";
 
 export default function QuizPage() {
   const {
@@ -23,13 +24,16 @@ export default function QuizPage() {
     quizEnds,
     opponentPointTrackers,
   } = useQuizLogic();
+  const { inMobileView } = useInMobileView();
 
   return (
     <main className="--verticle-flex --has-padding">
       <div className="quiz-header --has-padding">
         <h2 className="sub-heading --h2 quiz-heading">{quiz.name} Quiz</h2>
       </div>
-      <section className="quiz-section --horizontal-flex">
+      <section
+        className={`quiz-section ${inMobileView ? "" : "--horizontal-flex"}`}
+      >
         <div className="question-and-footer-container">
           <div className="question-options-container">
             <Question
@@ -43,7 +47,7 @@ export default function QuizPage() {
             <div className="helper-container"></div>
           </div>
         </div>
-        <aside className="quiz-aside --has-padding">
+        <aside className={`${inMobileView ? "" : "quiz-aside"} --has-padding`}>
           <div className="score-quit-btn-container --verticle-flex --has-gap">
             <button
               className="btn quit-quiz-btn --primary-btn --small-text"
@@ -72,8 +76,8 @@ export default function QuizPage() {
                   <MultiplayerPointTracker
                     key={index * 2}
                     questionNumber={index + 1}
-                    selfPosition={allPointerTrackers.length + 1}
-                    opponentPosition={opponentPointTrackers.length + 1}
+                    selfPosition={allPointerTrackers.length}
+                    opponentPosition={opponentPointTrackers.length}
                   />
                 ))
               : allPointerTrackers.map((tracker, index) => (

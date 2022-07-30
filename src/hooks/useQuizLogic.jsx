@@ -63,10 +63,10 @@ export default function useQuizLogic() {
   useEffect(() => {
     if (!isQuizOver) return;
     clearInterval(currentIntervalID);
-    if (quizEnds.mode === "multiplayer") {
-      socket.emit("end-quiz", totalScore);
+    if (quiz.mode === "multiplayer") {
+      socket.emit("end-quiz");
     } else {
-      navigate("../single-player/result", {
+      navigate("/result", {
         state: {
           finalScore: totalScore,
         },
@@ -102,6 +102,9 @@ export default function useQuizLogic() {
   useEffect(() => {
     if (timer !== 0) return;
     setAllPoitnerTrackers((prev) => [...prev, 0]);
+    if (quiz.mode === "multiplayer") {
+      socket.emit("next-question", timer);
+    }
     updateQuestion();
   }, [timer]);
 
@@ -114,7 +117,16 @@ export default function useQuizLogic() {
           ...prev,
           opponentScoreFromLastestQuestion,
         ]);
-        console.log(opponentScoreFromLastestQuestion);
+      });
+      socket.on("end-quiz", () => {
+        navigate("/result", {
+          state: {
+            scoreboard: {
+              you: allPointerTrackers,
+              opponent: opponentPointTrackers,
+            },
+          },
+        });
       });
     }
   }, []);

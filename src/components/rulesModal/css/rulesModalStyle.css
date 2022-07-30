@@ -23,7 +23,7 @@
 .modal__container {
   background: var(--MODAL-INNER-CONTAINERS-BACKGROUND-CLR);
   border-radius: 15px;
-  padding: 1rem 2rem;
+  padding: 1rem clamp(1rem, 0.6rem + 2vw, 2rem);
 }
 
 .username-input {

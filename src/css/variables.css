@@ -20,7 +20,7 @@
   --BTN-PADDING-Y: 10px;
   --BTN-PADDING-X: 1em;
   --HAS-GAP-VALUE: 1rem;
-  --HAS-PADDING-VALUE: 1rem;
+  --HAS-PADDING-VALUE: clamp(0.5rem, 1vw + 0.3rem, 1rem);
   --LOADER-WIDTH: 4em;
   --LOADER-BORDER-WIDTH: 5px;
   --QUIZ-CARD-HEIGHT: 19.65rem;

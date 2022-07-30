@@ -18,16 +18,48 @@ export default function ResultPage() {
         </h2>
       </div>
       <section className="result-section --verticle-flex --centered-flex --has-padding">
-        <p className="to-user-message">
-          Kuddos, <span className="name-span --bold-700">{user.name}</span>.
-        </p>
-        <p className="score-message">
-          Your final score is{" "}
-          <span className="total-score-span --bold-700">
-            {location.state.finalScore}
-          </span>
-          .
-        </p>
+        {quiz.mode === "multiplayer" ? (
+          <>
+            <p className="to-user-message">
+              <span className="name-span --bold-700">scoreboard</span>
+            </p>
+            <div>
+              <table>
+                <tr>
+                  <th>Player</th>
+                  {Array.from(Array(10)).map((item, index) => (
+                    <th>Question {index}</th>
+                  ))}
+                </tr>
+                <tr>
+                  <th>you</th>
+                  {location.state.scoreboard.you.map((score) => (
+                    <th>{score}</th>
+                  ))}
+                </tr>
+                <tr>
+                  <th>opponent</th>
+                  {location.state.scoreboard.opponent.map((score) => (
+                    <th>{score}</th>
+                  ))}
+                </tr>
+              </table>
+            </div>
+          </>
+        ) : (
+          <>
+            <p className="to-user-message">
+              Kuddos, <span className="name-span --bold-700">{user.name}</span>.
+            </p>
+            <p className="score-message">
+              Your final score is{" "}
+              <span className="total-score-span --bold-700">
+                {location.state.finalScore}
+              </span>
+              .
+            </p>
+          </>
+        )}
       </section>
       <div className="result-page-footer --has-padding">
         <p className="footer-message --bold-600">

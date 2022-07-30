@@ -1,3 +1,3 @@
 import { io } from "socket.io-client";
-const socket = io("https://b-mock-qz.vercel.app").connect();
+const socket = io("http://127.0.0.1:3001").connect();
 export default socket;
