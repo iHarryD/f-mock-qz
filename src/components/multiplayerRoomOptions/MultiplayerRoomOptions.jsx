@@ -1,7 +1,7 @@
 import roomOptionsStyles from "./MultiplayerRoomOptions.module.css";
 import { useEffect, useRef, useState } from "react";
 import InRoom from "../inRoom/InRoom";
-import { useUser } from "../../contexts/userContext";
+import { useAuth } from "../../contexts/authContext";
 import { useQuiz } from "../../contexts/quizContext";
 import socket from "../../socket/socket";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +11,7 @@ export default function MultiplayerRoomOptions() {
   const [roomID, setRoomID] = useState(null);
   const [roomStatusMessages, setRoomStatusMessages] = useState([]);
   const roomIDInputRef = useRef(null);
-  const { user, setUser } = useUser();
+  const { userData, setUserData } = useAuth();
   const { quiz, setQuiz } = useQuiz();
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ export default function MultiplayerRoomOptions() {
 
   function createRoom() {
     if (!socket) return;
-    socket.emit("add-nickname", user.name);
+    socket.emit("add-nickname", userData.name);
     socket.emit(
       "create-room",
       {
@@ -41,7 +41,7 @@ export default function MultiplayerRoomOptions() {
 
   function joinRoom(roomID) {
     if (!socket) return;
-    socket.emit("add-nickname", user.name);
+    socket.emit("add-nickname", userData.name);
     socket.emit("join-room", roomID, (roomID, quizDetails) => {
       setRoomID(roomID);
       setQuiz((prev) => ({
@@ -89,9 +89,9 @@ export default function MultiplayerRoomOptions() {
         ) : (
           <>
             <input
-              placeholder={user.name}
+              placeholder={userData.name}
               className={`input ${roomOptionsStyles["room-name-input"]}`}
-              onChange={(e) => setUser({ name: e.target.value })}
+              onChange={(e) => setUserData({ name: e.target.value })}
             />
             <div className={roomOptionsStyles["button-container"]}>
               <button

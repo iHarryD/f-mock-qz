@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSun,
+  faMoon,
+  faArrowRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-
+import { useAuth } from "../../contexts/authContext";
 import "./css/headerStyle.css";
 import { useTheme } from "../../contexts/themeContext";
 
 export default function Header() {
   const { themePreference, setThemePreference } = useTheme();
+  const { logout, userData } = useAuth();
 
   function setTheme(theme) {
     setThemePreference(theme);
@@ -48,6 +53,13 @@ export default function Header() {
               />
             </button>
           </li>
+          {userData && (
+            <li>
+              <button className="btn --icon-only-btn" onClick={() => logout()}>
+                <FontAwesomeIcon icon={faArrowRightFromBracket} />
+              </button>
+            </li>
+          )}
         </ul>
       </nav>
     </header>

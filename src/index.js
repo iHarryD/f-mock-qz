@@ -3,19 +3,22 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import { UserProvider } from "./contexts/userContext";
+import { AuthProvider } from "./contexts/authContext";
 import { QuizProvider } from "./contexts/quizContext";
 import { ThemeProvider } from "./contexts/themeContext";
+import { PlayerProvider } from "./contexts/playerContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider>
-        <UserProvider>
-          <QuizProvider>
-            <App />
-          </QuizProvider>
-        </UserProvider>
+        <AuthProvider>
+          <PlayerProvider>
+            <QuizProvider>
+              <App />
+            </QuizProvider>
+          </PlayerProvider>
+        </AuthProvider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,

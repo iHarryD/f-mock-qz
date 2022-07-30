@@ -1,11 +1,11 @@
 import { useNavigate, useLocation } from "react-router-dom";
 
 import "./css/resultPageStyle.css";
-import { useUser } from "../../contexts/userContext";
+import { usePlayer } from "../../contexts/playerContext";
 import { useQuiz } from "../../contexts/quizContext";
 
 export default function ResultPage() {
-  const { user } = useUser();
+  const { playerName } = usePlayer();
   const { quiz } = useQuiz();
   const location = useLocation();
   const navigation = useNavigate();
@@ -49,7 +49,8 @@ export default function ResultPage() {
         ) : (
           <>
             <p className="to-user-message">
-              Kuddos, <span className="name-span --bold-700">{user.name}</span>.
+              Kuddos, <span className="name-span --bold-700">{playerName}</span>
+              .
             </p>
             <p className="score-message">
               Your final score is{" "}

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import "./css/rulesModalStyle.css";
 import BodyBackdrop from "../bodyBackdrop/BodyBackdrop";
-import { useUser } from "../../contexts/userContext";
+import { usePlayer } from "../../contexts/playerContext";
 import { useQuiz } from "../../contexts/quizContext";
 import { ButtonWithLoader } from "../buttons/Buttons";
 import { ErrorToast } from "../toasts/Toasts";
@@ -17,7 +17,7 @@ export default function RulesModal(props) {
   const [caughtError, setCaughtError] = useState(null);
   const navigate = useNavigate();
   const usernameInputRef = useRef();
-  const { user, setUser } = useUser();
+  const { playerName, setPlayerName } = usePlayer();
   const { quiz, setQuiz } = useQuiz();
 
   async function getQuestions() {
@@ -48,12 +48,7 @@ export default function RulesModal(props) {
   };
 
   function startQuiz() {
-    setUser((prev) => ({
-      ...prev,
-      name: usernameInputRef.current.value.replace(/\s/g, "")
-        ? usernameInputRef.current.value
-        : prev.name,
-    }));
+    setPlayerName(usernameInputRef.current.value);
     getQuestions();
   }
 
@@ -103,7 +98,7 @@ export default function RulesModal(props) {
                 className="username-input"
                 type="text"
                 name="name"
-                placeholder={user.name}
+                placeholder={playerName}
               />
             </div>
             <div className="--horizontal-flex --centered-flex --has-gap">
