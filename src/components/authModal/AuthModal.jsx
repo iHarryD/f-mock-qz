@@ -6,11 +6,14 @@ import { login, signup } from "../../services/authServices";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 import { ButtonWithLoader } from "../buttons/Buttons";
+import { getErrorMessage } from "../../helpers/getErrorMessage";
 
 const testCredentials = {
   email: "test@mockqz.com",
   password: "sayshazam",
 };
+
+const emptyFieldMessage = "Please fill in all fields to proceed.";
 
 export default function AuthModal({ navigateTo }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -39,11 +42,11 @@ export default function AuthModal({ navigateTo }) {
           navigate(navigateTo);
         },
         (err) => {
-          setError(err.message);
+          setError(getErrorMessage(err));
         }
       );
     } else {
-      setError("Fill in all fields to proceed.");
+      setError(emptyFieldMessage);
     }
   }
 
@@ -60,11 +63,11 @@ export default function AuthModal({ navigateTo }) {
           handleLogin();
         },
         (err) => {
-          setError(err.message);
+          setError(getErrorMessage(err));
         }
       );
     } else {
-      setError("Fill in all fields to proceed.");
+      setError(emptyFieldMessage);
     }
   }
 
@@ -106,7 +109,7 @@ export default function AuthModal({ navigateTo }) {
               clickHandler={() => handleRegister()}
             />
             <button
-              className="btn --text-btn"
+              className="btn --text-only-btn"
               onClick={() => {
                 emailInputRef.current.value = testCredentials.email;
                 passwordInputRef.current.value = testCredentials.password;
