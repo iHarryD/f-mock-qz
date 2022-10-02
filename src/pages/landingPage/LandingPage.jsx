@@ -13,8 +13,8 @@ export default function LandingPage() {
   return (
     <>
       {modeSelected && (
-        <BodyBackdrop>
-          <AuthModal quizMode={modeSelected} />
+        <BodyBackdrop onClick={() => setModeSelected(null)}>
+          <AuthModal navigateTo={modeSelected} />
         </BodyBackdrop>
       )}
       <main className="--verticle-flex --centered-flex">
