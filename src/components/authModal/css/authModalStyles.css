@@ -1,7 +1,36 @@
 .auth-modal {
+  background: #000;
+  border-radius: 10px;
+  padding: 1.5rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 20rem;
+}
+
+.input-password-container {
+  position: relative;
+}
+
+.password-input {
+  width: 100%;
+}
+
+.input-password-container > .--icon-only-btn {
+  font-size: 1rem;
+  opacity: 0.6;
+  position: absolute;
+  top: 0.7rem;
+  right: 1rem;
+}
+
+.auth-modal-btns-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.auth-error-text {
+  color: var(--RED-CLR);
+  text-align: center;
 }
