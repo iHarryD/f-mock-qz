@@ -30,7 +30,6 @@ export default function RulesModal(props) {
         navigate(`in-quiz/${quiz.code}`);
       },
       (err) => {
-        console.log(err);
         setCaughtError(err);
       }
     );
@@ -48,7 +47,9 @@ export default function RulesModal(props) {
   };
 
   function startQuiz() {
-    setPlayerName(usernameInputRef.current.value);
+    if (usernameInputRef.current.value.replaceAll(" ", "").length) {
+      setPlayerName(usernameInputRef.current.value);
+    }
     getQuestions();
   }
 
