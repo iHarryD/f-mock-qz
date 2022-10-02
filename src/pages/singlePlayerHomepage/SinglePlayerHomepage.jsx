@@ -17,7 +17,7 @@ export default function SinglePlayerHomepage() {
 
   return (
     <>
-      {hasUserSelected && <RulesModal modalState={setHasUserSelected} />}
+      {hasUserSelected && <RulesModal modalStateSetter={setHasUserSelected} />}
       <Quizes quizCardClickHandler={quizClickHandler} />
     </>
   );

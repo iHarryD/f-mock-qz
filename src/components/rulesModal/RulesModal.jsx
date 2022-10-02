@@ -54,7 +54,7 @@ export default function RulesModal(props) {
   }
 
   return (
-    <BodyBackdrop>
+    <BodyBackdrop onClick={() => props.modalStateSetter(false)}>
       <motion.div
         className="modal --verticle-flex --has-gap --has-padding"
         variants={modalVariant}
@@ -111,7 +111,7 @@ export default function RulesModal(props) {
               <button
                 className="btn modal-close-btn --secondary-btn"
                 onClick={() => {
-                  props.modalState(false);
+                  props.modalStateSetter(false);
                 }}
               >
                 Go Back
